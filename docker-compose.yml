@@ -1,0 +1,12 @@
+version: "3"
+services:
+  # frontend #########################################################
+  front:
+    image: p6-front:${DOCKER_TAG_FRONTEND}
+    restart: always
+    tty: true
+    volumes:
+      - "./app/frontend/:/root/frontend"
+    ports:
+      - "3000:3000"
+    working_dir: /root/frontend/p6-front
