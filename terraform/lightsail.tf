@@ -31,10 +31,10 @@ resource "aws_lightsail_instance_public_ports" "https" {
 }
 
 resource "aws_lightsail_static_ip" "static_ip" {
-  name = "${var.root_domain}"
+  name = var.root_domain
 }
 
 resource "aws_lightsail_static_ip_attachment" "static_ip_attach" {
   static_ip_name = aws_lightsail_static_ip.static_ip.id
-  instance_name = aws_lightsail_instance.vps_instance.id
+  instance_name  = aws_lightsail_instance.vps_instance.id
 }

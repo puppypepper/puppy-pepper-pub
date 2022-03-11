@@ -7,6 +7,18 @@ resource "aws_route53_record" "root_record" {
   zone_id = data.aws_route53_zone.route53-zone.zone_id
   name    = var.root_domain
   type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.p6-cf.domain_name
+    zone_id                = aws_cloudfront_distribution.p6-cf.hosted_zone_id
+    evaluate_target_health = true
+  }
+}
+
+resource "aws_route53_record" "cloudfront_origin_record" {
+  zone_id = data.aws_route53_zone.route53-zone.zone_id
+  name    = var.cloudfront_origin_domain
+  type    = "A"
   ttl     = "60"
   records = [aws_lightsail_static_ip.static_ip.ip_address]
 }
