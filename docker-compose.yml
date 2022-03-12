@@ -1,12 +1,19 @@
 version: "3"
 services:
   # frontend #########################################################
-  front:
+  front-dev:
     image: p6-front:${DOCKER_TAG_FRONTEND}
     restart: always
     tty: true
     volumes:
-      - "./app/frontend/:/root/frontend"
+      - "./app/frontend/p6-front:/root/p6-front"
     ports:
+      - "80:80"
       - "3000:3000"
-    working_dir: /root/frontend/p6-front
+    working_dir: /root/p6-front
+
+  front-prod:
+    image: p6-front:${DOCKER_TAG_FRONTEND}
+    restart: always
+    ports:
+      - "80:80"

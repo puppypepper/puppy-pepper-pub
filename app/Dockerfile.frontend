@@ -1,0 +1,31 @@
+FROM ubuntu:20.04
+
+# to avoid being asked time zone
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y \
+  curl \
+  git \
+  vim \
+  nginx
+
+ARG NODEJS_VERSION=14
+RUN curl -SL https://deb.nodesource.com/setup_$NODEJS_VERSION.x | bash
+RUN apt-get install -y nodejs
+RUN apt-get install -y build-essential
+
+# react-app setup
+COPY ./p6-front /root/p6-front
+WORKDIR /root/p6-front
+RUN npm install
+RUN npm run build
+# for nginx 
+RUN chmod 755 /root /root/p6-front/build
+
+# nginx
+COPY ./default.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
