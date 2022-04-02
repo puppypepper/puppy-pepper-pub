@@ -1,0 +1,18 @@
+FROM ubuntu:20.04
+
+# to avoid being asked time zone
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y \
+  curl \
+  git \
+  vim \
+  nginx
+
+# nginx
+COPY ./default.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]

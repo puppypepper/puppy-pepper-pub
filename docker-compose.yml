@@ -1,5 +1,13 @@
 version: "3"
 services:
+  # nginx    #########################################################
+  nginx:
+    image: p6-nginx:${DOCKER_TAG_NGINX}
+    restart: always
+    tty: true
+    ports:
+      - "80:80"
+
   # frontend #########################################################
   front-dev:
     image: p6-front:${DOCKER_TAG_FRONTEND}
@@ -8,7 +16,6 @@ services:
     volumes:
       - "./app/frontend/p6-front:/root/p6-front"
     ports:
-      - "80:80"
       - "3000:3000"
     working_dir: /root/p6-front
 
@@ -16,4 +23,4 @@ services:
     image: p6-front:${DOCKER_TAG_FRONTEND}
     restart: always
     ports:
-      - "80:80"
+      - "3000:3000"
