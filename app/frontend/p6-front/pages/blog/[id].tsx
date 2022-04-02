@@ -46,7 +46,10 @@ export const getStaticProps = async (paths: any) => {
     articleBody: articleBody
   }
 
-  return { props }
+  return { 
+    props: props,
+    revalidate: 300,
+  }
 }
 
 export default Article

@@ -14,7 +14,7 @@ const Home: NextPage = (props: any) => {
               const articleTitle = article.replace("puppy-pepper/","")
               const articleLink = "/blog/" + articleTitle
               return (
-                <li>
+                <li key={articleTitle}>
                   <Link href={articleLink}>{articleTitle}</Link>
                 </li>
               )
@@ -33,9 +33,8 @@ export const getStaticProps = async () => {
 
   // コンポーネントに渡すデータを指定
   return {
-    props: {
-      articles,
-    },
+    props: { articles },
+    revalidate: 300,
   }
 }
 
