@@ -20,5 +20,3 @@ COPY ./p6-front /root/p6-front
 WORKDIR /root/p6-front
 RUN npm install
 RUN npm run build
-
-ENTRYPOINT ["npm", "run", "start"]

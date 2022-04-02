@@ -18,9 +18,15 @@ services:
     ports:
       - "3000:3000"
     working_dir: /root/p6-front
+    depends_on:
+      - nginx
 
   front-prod:
     image: p6-front:${DOCKER_TAG_FRONTEND}
     restart: always
     ports:
       - "3000:3000"
+    working_dir: /root/p6-front
+    depends_on:
+      - nginx
+    command: npm run start
