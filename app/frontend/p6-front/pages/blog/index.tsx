@@ -1,13 +1,15 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
+
 import Layout from 'components/Layout'
 import ArticleS3Client from 'utils/S3'
+
 import styles from 'styles/Home.module.css'
 
 const Home: NextPage = (props: any) => {
   return (
     <div className={styles.container}>
-      <Layout>
+      <Layout title="p6-blog">
         <ul>
           {
             props.articles.map((article: string) => {

@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
+
+import Layout from 'components/Layout'
 import ArticleS3Client from 'utils/S3'
 
 type PathParams = {
@@ -14,8 +16,10 @@ type PageProps = {
 const Article = ({ articleBody }: PageProps) => {
   return (
     <div>
-      <ReactMarkdown skipHtml={true}>{articleBody}</ReactMarkdown>
-      <Link href="/blog">blog_home</Link>
+      <Layout title="p6-blog">
+        <ReactMarkdown skipHtml={true}>{articleBody}</ReactMarkdown>
+        <Link href="/blog">blog_home</Link>
+      </Layout>
     </div>
   )
 }
