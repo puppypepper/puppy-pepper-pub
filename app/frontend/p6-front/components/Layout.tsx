@@ -18,6 +18,7 @@ const Layout = ({ children, title, description }: Props) => {
       <nav>
         <ul>
           <li><Link href="/">home</Link></li>
+          <li><Link href="/blog">blog</Link></li>
           <li><Link href="/api/hello">hello</Link></li>
         </ul>
       </nav>
