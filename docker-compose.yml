@@ -1,6 +1,6 @@
 version: "3"
 services:
-  # nginx    #########################################################
+  # nginx ############################################################
   nginx:
     image: p6-nginx:${DOCKER_TAG_NGINX}
     restart: always
@@ -12,7 +12,7 @@ services:
 
   # frontend #########################################################
   front-dev:
-    image: p6-front:${DOCKER_TAG_FRONTEND}
+    image: p6-front:${DOCKER_TAG_FRONT}
     restart: always
     tty: true
     volumes:
@@ -24,7 +24,7 @@ services:
       - nginx
 
   front-prod:
-    image: p6-front:${DOCKER_TAG_FRONTEND}
+    image: p6-front:${DOCKER_TAG_FRONT}
     restart: always
     ports:
       - "3000:3000"
