@@ -36,7 +36,7 @@ export const getStaticProps = async () => {
   // コンポーネントに渡すデータを指定
   return {
     props: { articles },
-    revalidate: 300,
+    revalidate: 10,
   }
 }
 

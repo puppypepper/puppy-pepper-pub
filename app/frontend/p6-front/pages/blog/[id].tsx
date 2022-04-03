@@ -34,9 +34,11 @@ export const getStaticPaths = async () => {
     paths.push({ params: { id: article }})
   })
 
+  console.log(paths)
+
   return {
     paths: paths,
-    fallback: false
+    fallback: 'blocking'
   }
 }
 
@@ -52,7 +54,7 @@ export const getStaticProps = async (paths: any) => {
 
   return { 
     props: props,
-    revalidate: 300,
+    revalidate: 10,
   }
 }
 
